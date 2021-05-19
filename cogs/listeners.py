@@ -147,7 +147,7 @@ class Listeners(commands.Cog) :
 					embed.set_image(
 						url = message.attachments[0].url
 					)
-					await frwdc.send(message.author.mentiom,embed=embed)
+					await frwdc.send(message.author.mention,embed=embed)
 					await message.channel.send(stringVars.onMsg.format(self.client.get_channel(generalC).mention,
 																		self.client.get_channel(verifiedC).mention,
 																		message.author.mention))

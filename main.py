@@ -6,8 +6,8 @@ sys.path.append(parentdir)
 #work around for package importing
 
 import discord
-from VB.data import mongoDB
-#from VB.data import keep_alive
+from discord_bot.data import mongoDB
+from discord_bot.data import keep_alive
 from discord.ext import commands
 
 ignoredFiles = ['stringVars.py','__init__.py']
@@ -26,5 +26,5 @@ def loadCogs(client):
 if __name__ == "__main__":
 	client = commands.Bot(command_prefix= (get_prefix))
 	loadCogs(client)
-	#keep_alive.keep_alive()
+	keep_alive.keep_alive()
 	client.run(os.getenv('TOKEN'))

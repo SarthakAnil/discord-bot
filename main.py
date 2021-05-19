@@ -2,12 +2,12 @@ import os, sys
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
-
+# for deployment in heroku use app as the top level pkg name
 #work around for package importing
-print(os.getcwd().split('/')[-1])
+#print(os.getcwd().split('/')[-1])
 import discord
-from discord_bot.data import mongoDB
-from discord_bot import keep_alive
+from app.data import mongoDB
+from app import keep_alive
 from discord.ext import commands
 
 ignoredFiles = ['stringVars.py','__init__.py']

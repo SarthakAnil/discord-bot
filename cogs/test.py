@@ -1,7 +1,7 @@
 import discord 
-from discord_bot.data import stringVars 
+from app.data import stringVars 
 from discord.ext import commands
-from discord_bot.data.mongoDB import dbCollection
+from app.data.mongoDB import dbCollection
 import traceback
 import asyncio
 

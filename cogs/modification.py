@@ -1,7 +1,7 @@
 import discord 
-from discord_bot.data import stringVars 
+from app.data import stringVars 
 from discord.ext import commands
-from discord_bot.data.mongoDB import dbCollection
+from app.data.mongoDB import dbCollection
 import traceback
 import asyncio
 
@@ -12,7 +12,7 @@ class Setups(commands.Cog) :
 	@commands.command(name = 'setPrefix' ,aliases =['sp'] , help = stringVars.help_setPrefix,description = stringVars.Des_help_setPrefix)
 	@commands.guild_only()
 	@commands.has_permissions(manage_guild=True)
-	async def setPrefix(self,ctx,prefix='.discord_bot '):
+	async def setPrefix(self,ctx,prefix='.app '):
 		myquery = { "guild_id": ctx.guild.id }
 		newvalues = { '$set': { "Prefix": prefix } }
 		dbCollection.update_one(myquery, newvalues)

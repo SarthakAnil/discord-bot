@@ -1,5 +1,5 @@
 import discord 
-from discord_bot.data import stringVars # VB is the name of the root directory
+from app.data import stringVars # VB is the name of the root directory
 from discord.ext import commands
 
 class Owneronly(commands.Cog) :

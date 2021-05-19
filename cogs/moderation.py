@@ -1,8 +1,8 @@
 import discord
 import sys
 import asyncio
-from discord_bot.data import stringVars 
-from discord_bot.data.mongoDB import dbCollection
+from app.data import stringVars 
+from app.data.mongoDB import dbCollection
 from discord.ext import commands
 
 

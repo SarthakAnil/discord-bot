@@ -126,8 +126,8 @@ class Setups(commands.Cog) :
 	@commands.has_permissions(manage_guild=True)
 	async def setup(self,ctx,listeningC : discord.TextChannel,
 						forwardingC : discord.TextChannel,
-						verifiedC : discord.TextChannel = None,
-						generalC : discord.TextChannel = None
+						verifiedC : discord.TextChannel ,
+						generalC : discord.TextChannel 
 						):
 
 		guild_info = dbCollection.find_one({"guild_id" : ctx.guild.id})

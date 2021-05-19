@@ -38,7 +38,7 @@ class Moderation(commands.Cog) :
 	@commands.command(aliases =['v'] ,help = stringVars.help_verify,description = stringVars.Des_help_verify)
 	@commands.guild_only()
 	@commands.has_permissions(manage_guild=True, manage_roles =True)
-	async def verify(self,ctx ,member :discord.Member, role :discord.Role ,channel :discord.TextChannel,*, message=None):
+	async def verify(self,ctx ,member :discord.User, role :discord.Role ,channel :discord.TextChannel,*, message=None):
 		def check(message):
 				return message.author.id == ctx.message.author.id and message.content != ""
 		
@@ -81,6 +81,7 @@ class Moderation(commands.Cog) :
 					await channel.send(' '.join(mention_arr) ,embed = message_embed  )
 					await ctx.reply(f"The folowing has been send to the channel {channel.mention} \n{' '.join(mention_arr)}" ,embed = message_embed)
 					mention_arr.append(channel.mention)
+					message_embed.set_footer(text=stringVars.dmFooter )
 					await member.send(' '.join(mention_arr) ,embed = message_embed)
 
 				else:

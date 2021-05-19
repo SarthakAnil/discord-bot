@@ -1,6 +1,5 @@
+python >= 3.9.4
 discord.py
 flask
 pymongo
-os
 dotenv
-sys

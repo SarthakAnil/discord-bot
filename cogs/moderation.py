@@ -50,7 +50,7 @@ class Moderation(commands.Cog) :
 				title="List of messages stored in DB",
 				color=0xFF5733
 			)
-		mention_arr =[]
+		mention_arr =[member.mention]
 		if message ==None:
 			try:
 				guild_info = dbCollection.find_one({"guild_id" : ctx.guild.id})
@@ -78,6 +78,7 @@ class Moderation(commands.Cog) :
 						if word != '' :
 							if word[0] =='<' :
 								mention_arr.append(word)
+					
 					await channel.send(' '.join(mention_arr) ,embed = message_embed  )
 					await ctx.reply(f"The folowing has been send to the channel {channel.mention} \n{' '.join(mention_arr)}" ,embed = message_embed)
 					mention_arr.append(channel.mention)

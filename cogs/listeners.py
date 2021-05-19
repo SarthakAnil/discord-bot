@@ -20,7 +20,7 @@ class Listeners(commands.Cog) :
 			"Listining_forwarding" :{},
 			"Listining_general" :{},
 			"Listining_verified" :{},
-			"msgList" : [f'Please contact the moderators of{guild.name}']
+			"msgList" : [f'Please contact the moderators of {guild.name}']
 		}
 		dbCollection.insert_one(guild_info)
 	

@@ -7,7 +7,7 @@ sys.path.append(parentdir)
 
 import discord
 from discord_bot.data import mongoDB
-from discord_bot.data import keep_alive
+from discord_bot import keep_alive
 from discord.ext import commands
 
 ignoredFiles = ['stringVars.py','__init__.py']

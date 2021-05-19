@@ -45,7 +45,8 @@ delSetupLFDelete = "simple listening forwarding channel setup with\n{} as Listen
 setupLCexist = 'Listening channel {} alredy exist in DB,Hence another Forwarding channel cannot be setup. If you wish to reconfigure this Listening channel delet existing one using delete command then add again'
 setupDone = "Verification channel setup with\n{} as Listening Channel\n{} as Forwarding Channel\n{} as verified nottification Channel\n{} as General Nottification Channel "
 setupLFDone = "Listening Forwarding channel setup with\n{} as Listening Channel\n{} as Forwarding Channel\nis setup"
-
+delFailNotinDB = "The value you entered doesnt correspond to a channel in the DB"
+delFail = "Failed to delete setup!"
 
 
 

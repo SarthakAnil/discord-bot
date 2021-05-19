@@ -27,7 +27,7 @@ class Messaging(commands.Cog) :
 			)
 		mention_arr = [] 	#to send list of mentions as normal text
 		try :
-			if member == self.client.member :
+			if member == self.client.user :
 				
 				if message ==None :
 					Err_embed.add_field(name = 'Hmm.. I got nothing!!',value=stringVars.dmErrNomsg,inline=False )

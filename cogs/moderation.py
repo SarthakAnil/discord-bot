@@ -72,7 +72,7 @@ class Moderation(commands.Cog) :
 						icon_url=ctx.message.author.avatar_url
 					)
 					if (int(reply_message.content) != -1) :
-						Err_embed.add_field(name = 'Important',value=guild_info['msgList'][int(reply_message.content)],inline=False )
+						message_embed.add_field(name = 'Important',value=guild_info['msgList'][int(reply_message.content)],inline=False )
 					
 					for word in guild_info['msgList'][int(reply_message.content)].split(" "):
 						if word != '' :

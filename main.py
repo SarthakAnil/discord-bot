@@ -26,5 +26,5 @@ def loadCogs(client):
 if __name__ == "__main__":
 	client = commands.Bot(command_prefix= (get_prefix))
 	loadCogs(client)
-	keep_alive.keep_alive()
+	#keep_alive.keep_alive()
 	client.run(os.getenv('TOKEN'))

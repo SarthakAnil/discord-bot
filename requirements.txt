@@ -1,6 +1,5 @@
 discord.py
 flask
-threading
 pymongo
 os
 dotenv

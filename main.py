@@ -4,7 +4,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 
 #work around for package importing
-
+print(os.getcwd().split('/')[-1])
 import discord
 from discord_bot.data import mongoDB
 from discord_bot import keep_alive

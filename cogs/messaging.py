@@ -163,8 +163,10 @@ class Messaging(commands.Cog) :
 				color=0xFF5733
 			)
 		mention_arr = []
+		
 		try :
 			guild_info = dbCollection.find_one({"guild_id" : ctx.guild.id})
+			
 			if message ==None:
 								
 				for i in  range (len(guild_info['msgList'])) :
@@ -206,7 +208,7 @@ class Messaging(commands.Cog) :
 					name=(f'{ctx.message.author.display_name}#{ctx.message.author.discriminator}'), 
 					icon_url=ctx.message.author.avatar_url
 				)
-				for word in guild_info['msgList'][int(message)].split(" ") :
+				for word in message.split(" ") :
 					if word != '' :
 						if word[0] =='<' :
 							mention_arr.append(word)
@@ -218,7 +220,7 @@ class Messaging(commands.Cog) :
 			await ctx.reply(embed = Err_embed)
 		
 		except ValueError:
-			Err_embed.add_field(name = stringVars.dmErrFail,value=stringVars.dmErrInvalidInput,inline=False )
+			Err_embed.add_field(name = 'Failed to send Message',value=stringVars.dmErrInvalidInput,inline=False )
 			await ctx.reply(embed = Err_embed)
 		
 		except:

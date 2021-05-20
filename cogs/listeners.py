@@ -162,7 +162,7 @@ class Listeners(commands.Cog) :
 
 			else :
 				if len(message.attachments) >0 :
-					msg =[message.author.mention,message.content]
+					msg =[message.content]
 					
 					for ele in message.attachments :
 						msg.append(ele.url)
@@ -171,7 +171,8 @@ class Listeners(commands.Cog) :
 				else :
 					msg =[message.content]
 					await frwdc.send('\n'.join(msg))
-		
+				
+				await message.delete()	
 		
 		#await self.client.process_commands(message) no need in case of cogs
 

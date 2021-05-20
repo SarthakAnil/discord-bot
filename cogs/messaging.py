@@ -206,7 +206,7 @@ class Messaging(commands.Cog) :
 					name=(f'{ctx.message.author.display_name}#{ctx.message.author.discriminator}'), 
 					icon_url=ctx.message.author.avatar_url
 				)
-				for word in guild_info['msgList'][int(reply_message.content)].split(" ") :
+				for word in guild_info['msgList'][int(message)].split(" ") :
 					if word != '' :
 						if word[0] =='<' :
 							mention_arr.append(word)

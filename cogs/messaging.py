@@ -164,9 +164,9 @@ class Messaging(commands.Cog) :
 			)
 		mention_arr = []
 		try :
+			guild_info = dbCollection.find_one({"guild_id" : ctx.guild.id})
 			if message ==None:
-				guild_info = dbCollection.find_one({"guild_id" : ctx.guild.id})
-				
+								
 				for i in  range (len(guild_info['msgList'])) :
 					MgsL_embed.add_field(name= f'{i} :' ,value= guild_info['msgList'][i],inline=False ) 
 				

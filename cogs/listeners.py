@@ -169,7 +169,7 @@ class Listeners(commands.Cog) :
 					
 					await frwdc.send('\n'.join(msg))
 				else :
-					msg =[message.author.mention,message.content]
+					msg =[message.content]
 					await frwdc.send('\n'.join(msg))
 		
 		

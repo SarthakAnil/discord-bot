@@ -15,7 +15,7 @@ class Listeners(commands.Cog) :
 	async def on_guild_join(self,guild):
 		guild_info ={
 			"guild_id"  : guild.id,
-			"Prefix"	: '.discord-bot ',
+			"Prefix"	: '.vb ',
 			"Listening" : [],
 			"Listining_forwarding" :{},
 			"Listining_general" :{},

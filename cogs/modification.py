@@ -82,10 +82,10 @@ class Setups(commands.Cog) :
 				reply_message = await self.client.wait_for("message", timeout=60, check=check)
 				
 				if (int(reply_message.content) <= len(guild_info['Listening'])) :
-						guild_info['Listening'].pop(int(reply_message.content))
-						forwardingC = guild_info['Listining_forwarding'].pop(str(listeningC.id)) 
-						generalC = guild_info['Listining_general'].pop(str(listeningC.id),None) 
-						verifiedC = guild_info['Listining_verified'].pop(str(listeningC.id),None) 
+						listeningC = guild_info['Listening'].pop(int(reply_message.content))
+						forwardingC = guild_info['Listining_forwarding'].pop(str(listeningC)) 
+						generalC = guild_info['Listining_general'].pop(str(listeningC),None) 
+						verifiedC = guild_info['Listining_verified'].pop(str(listeningC),None) 
 						dbCollection.update_many(
 							{"guild_id" : ctx.guild.id},
 								{"$set": {	"Listening" : guild_info['Listening'], 
@@ -98,18 +98,18 @@ class Setups(commands.Cog) :
 
 						if verifiedC == None and generalC == None :
 							await ctx.reply(stringVars.delSetupLFDelete.format(
-																		listeningC.mention,
+																		self.client.get_channel(listeningC).mention,
 																		self.client.get_channel(forwardingC).mention,))
 						else: 
 							await ctx.reply(stringVars.delSetupDelete.format(
-																		listeningC.mention,
+																		self.client.get_channel(listeningC).mention,
 																		self.client.get_channel(forwardingC).mention,
 																		self.client.get_channel(verifiedC).mention ,
 																		self.client.get_channel(generalC).mention )
 																		)
 								
 				else:
-					Err_embed.add_field(name = stringVars.delFail,value=stringVars.delFailNotinDB,inline=False )##
+					Err_embed.add_field(name = stringVars.delFail,value=stringVars.delFailNotinDB,inline=False )
 					await ctx.reply(embed = Err_embed)
 			
 			except asyncio.TimeoutError:

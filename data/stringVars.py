@@ -80,10 +80,10 @@ Uasge : <prefix>['removeRole','rr','removerole','RemoveRole'] <mention user > <m
 Des_help_roles = "To get the roles of a user\nUsage : <prefix>roles <mention user>"
 
 Des_help_verify = '''Used to verify a user
-Uasge : <prefix>['verify','v']  <mention User > <mention Rolel > <mention verified Channel > <Message(optional)>
-Role :Role which the verified member will get
+Uasge : <prefix>['verify','v']  <mention User >  <Message(optional)>
+Role which the verified member will get is set when the verification setup was done
 User : The person whom you want to give role
-verified Channel : Channel where members are mentioned about their verification status
+Channel where members are mentioned about their verification status is set when the verification setup was done
 Message : optional message that you wish to include if none msg list will be shown type -1 to ignore it and send without message
 A succesfull verification message will be send to mentioned channel and same will be send as dm to the user
 '''

@@ -81,7 +81,7 @@ class Setups(commands.Cog) :
 				await ctx.send("Which one You wish to delete?", embed = MgsL_embed)
 				reply_message = await self.client.wait_for("message", timeout=60, check=check)
 				
-				if (int(reply_message.content) <= len(guild_info['Listening'])) :
+				if int(reply_message.content) <= len(guild_info['Listening']) and int(reply_message.content) >=0 :
 						listeningC = guild_info['Listening'].pop(int(reply_message.content))
 						forwardingC = guild_info['Listining_forwarding'].pop(str(listeningC)) 
 						generalC = guild_info['Listining_general'].pop(str(listeningC),None) 
@@ -127,7 +127,8 @@ class Setups(commands.Cog) :
 	async def setup(self,ctx,listeningC : discord.TextChannel,
 						forwardingC : discord.TextChannel,
 						verifiedC : discord.TextChannel ,
-						generalC : discord.TextChannel 
+						generalC : discord.TextChannel, 
+						verifiedRole : discord.Role
 						):
 
 		guild_info = dbCollection.find_one({"guild_id" : ctx.guild.id})
@@ -149,7 +150,9 @@ class Setups(commands.Cog) :
 			{"$set": {"Listening" : guild_info['Listening'], 
 			"Listining_forwarding" : guild_info['Listining_forwarding'], 
 			"Listining_general" : guild_info['Listining_general'], 
-			"Listining_verified" : guild_info['Listining_verified']
+			"Listining_verified" : guild_info['Listining_verified'],
+			"Verified_role" : verifiedRole.id,
+			"verification_notification" : verifiedC.id 
 			}
 		}
 		)

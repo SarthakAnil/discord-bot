@@ -58,7 +58,7 @@ class Moderation(commands.Cog) :
 		if channel_ID != None and role_ID != None :
 		
 			channel = self.client.get_channel(channel_ID)
-			role = self.client.get_role(role_ID)
+			role = ctx.guild.get_role(role_ID)
 			
 			if message ==None:
 				try:

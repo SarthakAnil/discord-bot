@@ -53,12 +53,13 @@ class Moderation(commands.Cog) :
 		mention_arr =[member.mention]
 		guild_info = dbCollection.find_one({"guild_id" : ctx.guild.id})
 		channel_ID =guild_info.get('verification_notification')
-		role_ID = guild_info.get('verification_notification')
+		role_ID = guild_info.get('Verified_role')
 
 		if channel_ID != None and role_ID != None :
 		
 			channel = self.client.get_channel(channel_ID)
 			role = ctx.guild.get_role(role_ID)
+						
 			
 			if message ==None:
 				try:
@@ -66,7 +67,7 @@ class Moderation(commands.Cog) :
 					for i in  range (len(guild_info['msgList'])) :
 						MgsL_embed.add_field(name= f'{i} :' ,value= guild_info['msgList'][i],inline=False ) 
 				
-					await ctx.send("Select a message to send(use -1 to send without message):",embed = MgsL_embed)
+					msg_list_msg = await ctx.send("Select a message to send(use -1 to send without message):",embed = MgsL_embed)
 					reply_message = await self.client.wait_for("message", timeout=60, check=check)
 					
 					if int(reply_message.content) <= len(guild_info['msgList']) and int(reply_message.content) >=-1:
@@ -88,7 +89,7 @@ class Moderation(commands.Cog) :
 									mention_arr.append(word)
 						
 						await channel.send(' '.join(mention_arr) ,embed = message_embed  )
-						await ctx.reply(f"The folowing has been send to the channel {channel.mention} \n{' '.join(mention_arr)}" ,embed = message_embed)
+						chnl_reply = await ctx.reply(f"The folowing has been send to the channel {channel.mention} \n{' '.join(mention_arr)}" ,embed = message_embed)
 						mention_arr.append(channel.mention)
 						message_embed.set_footer(text=stringVars.dmFooter )
 						await member.send(' '.join(mention_arr) ,embed = message_embed)
@@ -97,6 +98,11 @@ class Moderation(commands.Cog) :
 						Err_embed.add_field(name = stringVars.dmErrFail,value=stringVars.dmErrNotInDB,inline=False )
 						await ctx.reply(embed = Err_embed)
 					
+					await asyncio.sleep(4)
+					await msg_list_msg.delete()
+					await reply_message.delete()
+					await chnl_reply.delete()
+				
 				except asyncio.TimeoutError:
 					Err_embed.add_field(name = stringVars.dmErrFail,value=stringVars.dmErrTimeout,inline=False )
 					await ctx.reply(embed = Err_embed)
@@ -122,11 +128,15 @@ class Moderation(commands.Cog) :
 				
 				message_embed.add_field(name = 'Important',value=f"Check out {channel.mention} in {ctx.guild.name}",inline=False )
 				await channel.send(' '.join(mention_arr) , embed = message_embed)
-				await ctx.reply(f"The folowing has been send to the channel {channel.mention} \n{' '.join(mention_arr)}" ,embed = message_embed)
+				chnl_reply = await ctx.reply(f"The folowing has been send to the channel {channel.mention} \n{' '.join(mention_arr)}" ,embed = message_embed)
 				message_embed.set_footer(text=stringVars.dmFooter )
 				mention_arr.append(channel.mention)
 				await member.send(' '.join(mention_arr) ,embed = message_embed)
+				await asyncio.sleep(4)
+				await chnl_reply.delete()
+			
 			await member.add_roles(role)
+
 		else:
 			Err_embed.add_field(name = 'No Role/channel',value='Could not find and verified roles or mention channel',inline=False )
 			await ctx.reply(embed = Err_embed)

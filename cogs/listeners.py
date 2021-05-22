@@ -128,7 +128,7 @@ class Listeners(commands.Cog) :
 		if message.channel.id in listening_list :
 			frwdc = self.client.get_channel(guild_info['Listining_forwarding'][str(message.channel.id)])
 			generalC = guild_info.get('Listining_general', {}).get(str(message.channel.id))
-			verifiedC = guild_info.get('Listining_general', {}).get(str(message.channel.id))
+			verifiedC = guild_info.get('Listining_verified', {}).get(str(message.channel.id))
 			
 			
 			if generalC != None and verifiedC != None :

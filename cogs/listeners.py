@@ -144,10 +144,7 @@ class Listeners(commands.Cog) :
 				embed.set_footer(text= message.content)
 				
 				if len(message.attachments) > 0 :
-					embed.set_image(
-						url = message.attachments[0].url
-					)
-					await frwdc.send(message.author.mention,embed=embed)
+					await frwdc.send(f'{message.author.mention}\n{message.attachments[0].url}',embed=embed)
 					await message.channel.send(stringVars.onMsg.format(self.client.get_channel(generalC).mention,
 																		self.client.get_channel(verifiedC).mention,
 																		message.author.mention))

@@ -147,10 +147,9 @@ class Listeners(commands.Cog) :
 					
 					msg =['Verification Request',message.author.mention,message.content]
 					
-					for ele in message.attachments :
-						msg.append(ele.url)
+					file0 = await message.attachments[0].to_file()
 
-					await frwdc.send('\n'.join(msg))
+					await frwdc.send('\n'.join(msg),file0)
 					
 					await message.channel.send(stringVars.onMsg.format(self.client.get_channel(generalC).mention,
 																		self.client.get_channel(verifiedC).mention,
@@ -166,12 +165,12 @@ class Listeners(commands.Cog) :
 
 			else :
 				if len(message.attachments) >0 :
-					msg =[message.content]
-					
+					await frwdc.send(message.content)
 					for ele in message.attachments :
-						msg.append(ele.url)
+						f = await ele.to_file()
+						await frwdc.send(file= f)
 					
-					await frwdc.send('\n'.join(msg))
+					
 				else :
 					msg =[message.content]
 					await frwdc.send('\n'.join(msg))

@@ -149,7 +149,7 @@ class Listeners(commands.Cog) :
 					
 					file0 = await message.attachments[0].to_file()
 
-					await frwdc.send('\n'.join(msg),file0)
+					await frwdc.send('\n'.join(msg),file = file0)
 					
 					await message.channel.send(stringVars.onMsg.format(self.client.get_channel(generalC).mention,
 																		self.client.get_channel(verifiedC).mention,

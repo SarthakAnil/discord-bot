@@ -165,7 +165,8 @@ class Listeners(commands.Cog) :
 
 			else :
 				if len(message.attachments) >0 :
-					await frwdc.send(message.content)
+					if message.content != "" :
+						await frwdc.send(message.content)
 					for ele in message.attachments :
 						f = await ele.to_file()
 						await frwdc.send(file= f)
